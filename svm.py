@@ -4,7 +4,7 @@ import matplotlib.pyplot as pl
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv('.csv')
+dataset = pd.read_csv('Social_Network_Ads.csv')
 X = dataset.iloc[:, [2, 3]].values
 y = dataset.iloc[:, 4].values
 
@@ -19,8 +19,10 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
-#Fitting the classifier model
-#Create the classifier here
+#Fitting SVM to the training set
+from sklearn.svm import SVC
+classifier = SVC(kernel= 'linear', random_state= 0)
+classifier.fit(X_train, y_train)
 
 #Predicting test results
 pred_y = classifier.predict(X_test)

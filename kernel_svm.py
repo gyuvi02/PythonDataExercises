@@ -19,7 +19,7 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
-#Fitting SVM to the training set
+#Fitting the classifier model
 from sklearn.svm import SVC
 classifier = SVC(kernel= 'rbf', random_state= 0)
 classifier.fit(X_train, y_train)
@@ -43,7 +43,7 @@ pl.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     pl.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-pl.title('Logistic Regression (Training set)')
+pl.title('Kernek SVM (Training set)')
 pl.xlabel('Age')
 pl.ylabel('Estimated Salary')
 pl.legend()
@@ -61,7 +61,7 @@ pl.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     pl.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-pl.title('Logistic Regression (Test set)')
+pl.title('Kernel SVM (Test set)')
 pl.xlabel('Age')
 pl.ylabel('Estimated Salary')
 pl.legend()

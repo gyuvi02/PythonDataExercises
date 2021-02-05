@@ -4,7 +4,7 @@ import matplotlib.pyplot as pl
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv('')
+dataset = pd.read_csv('Social_Network_Ads.csv')
 X = dataset.iloc[:, [2, 3]].values
 y = dataset.iloc[:, 4].values
 
@@ -20,7 +20,9 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
 #Fitting the classifier model
-#Create the classifier here
+from sklearn.naive_bayes import GaussianNB
+classifier = GaussianNB()
+classifier.fit(X_train, y_train)
 
 #Predicting test results
 pred_y = classifier.predict(X_test)
@@ -41,7 +43,7 @@ pl.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     pl.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-pl.title('Logistic Regression (Training set)')
+pl.title('Naive Bayes (Training set)')
 pl.xlabel('Age')
 pl.ylabel('Estimated Salary')
 pl.legend()
@@ -59,7 +61,7 @@ pl.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     pl.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-pl.title('Logistic Regression (Test set)')
+pl.title('Naive Bayes (Test set)')
 pl.xlabel('Age')
 pl.ylabel('Estimated Salary')
 pl.legend()
